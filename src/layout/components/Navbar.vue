@@ -3,6 +3,8 @@
     <hamburger class="hamburger-container" />
     <breadcrumb class="breadcrumb-container" />
     <div class="right-menu">
+      <lang-select class="right-menu-item hover-effect" />
+
       <!-- 头像 -->
       <el-dropdown class="avatar-container" trigger="click">
         <div class="avatar-wrapper">
@@ -26,6 +28,7 @@
 </template>
 
 <script setup>
+import LangSelect from '@/components/LangSelect'
 import Breadcrumb from '@/components/Breadcrumb'
 import Hamburger from '@/components/Hamburger.vue'
 import { ref, watch } from 'vue'
