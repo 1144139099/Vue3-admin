@@ -17,6 +17,18 @@ module.exports = defineConfig({
     }
   },
   transpileDependencies: true,
+  configureWebpack() {
+    return {
+      resolve: {
+        alias: {
+          '@': resolve('src')
+        },
+        fallback: {
+          path: require.resolve('path-browserify')
+        }
+      }
+    }
+  },
   chainWebpack(config) {
     // 设置 svg-sprite-loader
     config.module
