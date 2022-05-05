@@ -1,13 +1,14 @@
 import variables from '@/styles/variables.module.scss'
 const getters = {
-  token: state => state.user.token,
-  userInfo: state => state.user.userInfo,
+  token: (state) => state.user.token,
+  userInfo: (state) => state.user.userInfo,
   /**
    * @returns true 表示已存在用户信息
    */
-  hasUserInfo: state => {
+  hasUserInfo: (state) => {
     return JSON.stringify(state.user.userInfo) !== '{}'
   },
+  mainColor: (state) => state.theme.mainColor,
   cssVar: () => variables,
   sidebarOpened: (state) => state.app.sidebarOpened
 }
