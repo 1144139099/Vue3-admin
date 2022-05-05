@@ -1,3 +1,6 @@
+import { MAIN_COLOR } from '@/constant'
+import { getItem } from '@/utils/storage'
+import { generateColors } from '@/utils/theme'
 import variables from '@/styles/variables.module.scss'
 const getters = {
   token: (state) => state.user.token,
@@ -9,7 +12,12 @@ const getters = {
     return JSON.stringify(state.user.userInfo) !== '{}'
   },
   mainColor: (state) => state.theme.mainColor,
-  cssVar: () => variables,
+  cssVar: (state) => {
+    return {
+      ...state.theme.variables,
+      ...generateColors(getItem(MAIN_COLOR))
+    }
+  },
   sidebarOpened: (state) => state.app.sidebarOpened
 }
 export default getters
