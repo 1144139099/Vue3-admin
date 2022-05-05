@@ -5,7 +5,7 @@
     <div class="right-menu">
       <lang-select class="right-menu-item hover-effect" />
       <theme-picker class="right-menu-item hover-effect"></theme-picker>
-
+      <screenfull class="right-menu-item hover-effect" />
       <!-- 头像 -->
       <el-dropdown class="avatar-container" trigger="click">
         <div class="avatar-wrapper">
@@ -31,6 +31,7 @@
 </template>
 
 <script setup>
+import Screenfull from '@/components/Screenfull'
 import ThemePicker from '@/components/ThemeSelect/index'
 import LangSelect from '@/components/LangSelect'
 import Breadcrumb from '@/components/Breadcrumb'
