@@ -6,6 +6,7 @@
       <header-search class="right-menu-item hover-effect" />
       <lang-select class="right-menu-item hover-effect" />
       <theme-picker class="right-menu-item hover-effect"></theme-picker>
+      <guide class="right-menu-item hover-effect" />
       <screenfull class="right-menu-item hover-effect" />
       <!-- 头像 -->
       <el-dropdown class="avatar-container" trigger="click">
@@ -32,6 +33,7 @@
 </template>
 
 <script setup>
+import Guide from '@/components/Guide'
 import HeaderSearch from '@/components/HeaderSearch'
 import Screenfull from '@/components/Screenfull'
 import ThemePicker from '@/components/ThemeSelect/index'
