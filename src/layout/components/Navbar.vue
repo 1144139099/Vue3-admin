@@ -1,7 +1,7 @@
 <template>
   <div class="navbar">
     <hamburger class="hamburger-container" />
-    <breadcrumb class="breadcrumb-container" />
+    <breadcrumb id="guide-breadcrumb" class="breadcrumb-container" />
     <div class="right-menu">
       <header-search class="right-menu-item hover-effect" />
       <lang-select class="right-menu-item hover-effect" />
@@ -39,7 +39,7 @@ import Screenfull from '@/components/Screenfull'
 import ThemePicker from '@/components/ThemeSelect/index'
 import LangSelect from '@/components/LangSelect'
 import Breadcrumb from '@/components/Breadcrumb'
-import Hamburger from '@/components/Hamburger.vue'
+import Hamburger from '@/components/Hamburger/index.vue'
 import { ref, watch } from 'vue'
 import { useRoute } from 'vue-router'
 import { useStore } from 'vuex'
