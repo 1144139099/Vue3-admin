@@ -8,6 +8,13 @@ export default {
     tagsViewList: getItem(TAGS_VIEW) || []
   }),
   mutations: {
+    /**
+     * 为指定的 tag 修改 title
+     */
+    changeTagsView(state, { index, tag }) {
+      state.tagsViewList[index] = tag
+      setItem(TAGS_VIEW, state.tagsViewList)
+    },
     triggerSidebarOpened(state) {
       state.sidebarOpened = !state.sidebarOpened
     },
