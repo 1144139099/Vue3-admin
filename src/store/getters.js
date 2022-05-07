@@ -12,6 +12,7 @@ const getters = {
   hasUserInfo: (state) => {
     return JSON.stringify(state.user.userInfo) !== '{}'
   },
+  language: (state) => state.app.language,
   mainColor: (state) => state.theme.mainColor,
   cssVar: (state) => {
     return {
