@@ -11,8 +11,12 @@ import installIcons from '@/icons'
 import './permission'
 // 导入i18n
 import i18n from '@/i18n'
+// filter
+import installFilter from '@/filter'
+
 const app = createApp(App)
 installElementPlus(app)
+installFilter(app)
 installIcons(app)
 app
   .use(store)
