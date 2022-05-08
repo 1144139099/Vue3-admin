@@ -3,7 +3,7 @@
     <el-card class="header">
       <div>
         <el-button type="primary" @click="onImportExcelClick"> {{ $t('msg.excel.importExcel') }}</el-button>
-        <el-button type="success">
+        <el-button type="success" @click="onToExcelClick">
           {{ $t('msg.excel.exportExcel') }}
         </el-button>
       </div>
@@ -28,8 +28,7 @@
             </div>
           </template>
         </el-table-column>
-        <el-table-column prop="openTime" :label="$t('msg.excel.openTime')"> </el-table-column>
-        <el-table-column :label="$t('msg.excel.openTime')">
+        <el-table-column prop="openTime" :label="$t('msg.excel.openTime')">
           <template #default="{ row }">
             {{ $filters.dateFilter(row.openTime) }}
           </template>
@@ -38,7 +37,7 @@
           <template #default>
             <el-button type="primary" size="mini">{{ $t('msg.excel.show') }}</el-button>
             <el-button type="info" size="mini">{{ $t('msg.excel.showRole') }}</el-button>
-            <el-button type="danger" size="mini">{{ $t('msg.excel.remove') }}</el-button>
+            <el-button type="danger" size="mini" @click="onRemoveClick(row)">{{ $t('msg.excel.remove') }}</el-button>
           </template>
         </el-table-column>
       </el-table>
@@ -55,6 +54,8 @@
       >
       </el-pagination>
     </el-card>
+
+    <export-to-excel v-model="exportToExcelVisible"></export-to-excel>
   </div>
 </template>
 
@@ -63,6 +64,8 @@ import { ref } from 'vue'
 import { getUserManageList } from '@/api/user-manage'
 import { watchSwitchLang } from '@/utils/i18n'
 import { useRouter } from 'vue-router'
+import { useI18n } from 'vue-i18n'
+import ExportToExcel from './components/Export2Excel.vue'
 
 // 数据相关
 const tableData = ref([])
@@ -98,6 +101,7 @@ const handleCurrentChange = (currentPage) => {
   page.value = currentPage
   getListData()
 }
+
 const router = useRouter()
 /**
  * excel 导入点击事件
@@ -106,6 +110,28 @@ const onImportExcelClick = () => {
   router.push('/user/import')
 }
 
+/**
+ * 删除按钮点击事件
+ */
+const i18n = useI18n()
+const onRemoveClick = (row) => {
+  ElMessageBox.confirm(i18n.t('msg.excel.dialogTitle1') + row.username + i18n.t('msg.excel.dialogTitle2'), {
+    type: 'warning'
+  }).then(async () => {
+    await deleteUser(row._id)
+    ElMessage.success(i18n.t('msg.excel.removeSuccess'))
+    // 重新渲染数据
+    getListData()
+  })
+}
+
+/**
+ * excel 导出点击事件
+ */
+const exportToExcelVisible = ref(false)
+const onToExcelClick = () => {
+  exportToExcelVisible.value = true
+}
 </script>
 
 <style lang="scss" scoped>
