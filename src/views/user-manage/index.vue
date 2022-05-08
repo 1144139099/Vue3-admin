@@ -34,8 +34,10 @@
           </template>
         </el-table-column>
         <el-table-column :label="$t('msg.excel.action')" fixed="right" width="260">
-          <template #default>
-            <el-button type="primary" size="mini">{{ $t('msg.excel.show') }}</el-button>
+          <template #default="{ row }">
+            <el-button type="primary" size="mini" @click="onShowClick(row._id)">
+              {{ $t('msg.excel.show') }}
+            </el-button>
             <el-button type="info" size="mini">{{ $t('msg.excel.showRole') }}</el-button>
             <el-button type="danger" size="mini" @click="onRemoveClick(row)">{{ $t('msg.excel.remove') }}</el-button>
           </template>
@@ -108,6 +110,12 @@ const router = useRouter()
  */
 const onImportExcelClick = () => {
   router.push('/user/import')
+}
+/**
+ * 查看按钮点击事件
+ */
+const onShowClick = (id) => {
+  router.push(`/user/info/${id}`)
 }
 
 /**
